@@ -20,13 +20,13 @@
 
       <script>
         var pubnub = PUBNUB({
-            publish_key : 'pub-c-4e1b3e30-86ee-4f8a-a8f3-f3cb460cf329',
-            subscribe_key : 'sub-c-d372b5ec-39d1-11e7-89f4-02ee2ddab7fe'
+            publish_key : 'YOUR_PUB_KEY',
+            subscribe_key : 'YOUR_SUB_KEY'
         })
 
         function publishSampleMessage(whichTrigger) {
           var publishConfig = {
-              channel : "Channel-frccdbvk2",
+              channel : "YOUR_CHANNEL_NAME",
               message : whichTrigger
           }
           pubnub.publish(publishConfig, function(status, response) {
