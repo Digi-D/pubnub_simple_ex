@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>test pubnub into unity</title>
+    <script src="http://cdn.pubnub.com/pubnub-3.16.5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+      button{
+        padding: 100px;
+        font-size: 20px;
+        color: red;
+        background-color: green;
+      }
+    </style>
+
+  </head>
+    <body>
+
+      <button id="test-button">clickMe</button>
+
+      <script>
+        var pubnub = PUBNUB({
+            publish_key : 'pub-c-4e1b3e30-86ee-4f8a-a8f3-f3cb460cf329',
+            subscribe_key : 'sub-c-d372b5ec-39d1-11e7-89f4-02ee2ddab7fe'
+        })
+
+        function publishSampleMessage(whichTrigger) {
+          var publishConfig = {
+              channel : "Channel-frccdbvk2",
+              message : whichTrigger
+          }
+          pubnub.publish(publishConfig, function(status, response) {
+              console.log(status, response);
+          })
+
+        }
+
+        $('#test-button').click(function(){
+          publishSampleMessage("helloMe");
+        })
+
+
+      </script>
+
+    </body>
+</html>
